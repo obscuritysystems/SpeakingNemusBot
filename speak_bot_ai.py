@@ -10,7 +10,7 @@ class SpeakBotAI(Bot):
 	def __init__(self):
 		
 		config = ConfigParser.RawConfigParser()
-		config.read('speak_bot.cfg')	
+		config.read('/opt/python/speaking_bot/speak_bot.cfg')	
 
 		host 		= config.get('Bot','host')
 		channel 	= config.get('Bot','channel')
@@ -47,8 +47,8 @@ class SpeakBotAI(Bot):
 
 			if self.logged_in:
 				cur = self.con.cursor()
-				cur.execute('INSERT INTO talk(handle,channel,message) values (?,?,?)',(parsed_msg['handle'],parsed_msg['text'],parsed_msg['channel']))
+				cur.execute('INSERT INTO talk(handle,channel,message) values (?,?,?)',(parsed_msg['handle'],parsed_msg['channel'],parsed_msg['text']))
 				self.con.commit()
 
-bot = SpeakBotAI()
-bot.run()
+#bot = SpeakBotAI()
+#bot.run()

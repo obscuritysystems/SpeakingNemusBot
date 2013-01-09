@@ -2,17 +2,18 @@
 
 import sys, time, socket
 from daemon import Daemon
-from speaok_bot_ai import SpeakBotAI
+from speak_bot_ai import SpeakBotAI
 
 class SpeakBot(Daemon):
 
 	def run(self):
+		print "start"
 		bot = SpeakBotAI()
 		bot.run()
 			
 
 if __name__ == "__main__":
-	daemon = NemusBot('/tmp/SpeakBot.pid')
+	daemon = SpeakBot('/tmp/SpeakBot.pid')
 	if len(sys.argv) == 2:
 		if 'start' == sys.argv[1]:
 			daemon.start()
